@@ -4,8 +4,39 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 export const metadata: Metadata = {
-  title: 'About The Sayan Villas | Tranquil Luxury in Ubud\'s Rice Fields',
-  description: 'Learn about The Sayan Villas — an elegant sanctuary in Sayan, Ubud, where natural beauty and refined living come together in perfect balance.',
+  title: 'About The Sayan Villas | Luxury Private Villas in Ubud Bali',
+  description: 'Discover The Sayan Villas, an ultra-luxury sanctuary in Sayan, Ubud featuring infinity pools, rice field views, personalized butler service, and authentic Balinese hospitality amidst serene natural beauty.',
+  keywords: [
+    "about the sayan villas",
+    "luxury villas ubud bali",
+    "sayan ridge resort",
+    "balinese hospitality",
+    "ubud luxury accommodation",
+    "private villas sayan",
+    "infinity pool villas bali",
+    "rice field view villas",
+    "luxury balinese experience",
+    "thesayanvillas story",
+    "bali luxury retreat",
+    "ubud resort philosophy"
+  ],
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    type: "website",
+    url: "https://thesayanvillas.com/about",
+    title: "About The Sayan Villas | Luxury Private Villas in Ubud Bali",
+    description: "Discover The Sayan Villas, an ultra-luxury sanctuary in Sayan, Ubud featuring infinity pools, rice field views, and personalized butler service.",
+    images: [
+      {
+        url: "/images/ornament.webp",
+        width: 1200,
+        height: 630,
+        alt: "The Sayan Villas - Luxury sanctuary with infinity pools and rice field views in Ubud Bali",
+      },
+    ],
+  },
 };
 
 export default function About() {

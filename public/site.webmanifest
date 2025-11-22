@@ -1,0 +1,26 @@
+{
+  "name": "The Sayan Villas - Luxury Private Villas in Ubud Bali",
+  "short_name": "The Sayan Villas",
+  "description": "Ultra-luxury private villas in Ubud, Bali featuring infinity pools, rice field views, and personalized butler service.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FEFEFE",
+  "theme_color": "#D4BFA0",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "categories": ["travel", "hospitality", "luxury", "resort"],
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48 32x32 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

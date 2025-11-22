@@ -3,13 +3,13 @@ import Image from 'next/image';
 
 export default function Hero() {
   return (
-    <section className="relative flex items-center justify-center overflow-hidden" style={{ height: '100vh' }}>
+    <section className="relative flex items-center justify-center overflow-hidden" style={{ height: '100vh' }} aria-label="Hero Section - The Sayan Villas Luxury Resort">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <div className="w-full h-full">
           <Image
             src="/images/ornament.webp"
-            alt="Luxury pool villa with stunning rice field views"
+            alt="The Sayan Villas - Luxury private pool villa with infinity pool overlooking emerald rice terraces in Ubud Bali"
             fill
             className="object-cover"
             priority
@@ -28,7 +28,7 @@ export default function Hero() {
           <div className="absolute inset-0 bg-white/10 blur-xl scale-110 rounded-full" />
           <Image
             src="/images/logo.svg"
-            alt="The Sayan Villas"
+            alt="The Sayan Villas Logo - Luxury Private Villas in Ubud Bali"
             width={288}
             height={288}
             className="h-24 sm:h-32 md:h-40 lg:h-56 xl:h-72 w-auto mx-auto relative z-10 drop-shadow-2xl"

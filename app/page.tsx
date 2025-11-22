@@ -1,7 +1,107 @@
+import { Metadata } from 'next';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import Link from 'next/link';
 import Image from 'next/image';
+
+export const metadata: Metadata = {
+  title: "The Sayan Villas | Luxury Private Villas with Infinity Pools in Ubud Bali",
+  description: "Discover The Sayan Villas - Ultra-luxury private villas in Ubud, Bali featuring infinity pools, rice field views, personalized butler service, and authentic Balinese hospitality. Experience the best of Ubud, Bali in your private villa paradise.",
+  keywords: [
+    "luxury villas ubud",
+    "private villas bali",
+    "infinity pool villas",
+    "rice field views",
+    "ubud luxury accommodation",
+    "the sayan villas",
+    "balinese hospitality",
+    "private pool villas",
+    "ubud honeymoon",
+    "luxury bali retreat",
+    "sayan ridge villas",
+    "bali villa experience"
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: "https://thesayanvillas.com",
+    title: "The Sayan Villas | Luxury Private Villas with Infinity Pools in Ubud Bali",
+    description: "Discover The Sayan Villas - Ultra-luxury private villas in Ubud, Bali featuring infinity pools, rice field views, and personalized butler service.",
+    images: [
+      {
+        url: "/images/ornament.webp",
+        width: 1200,
+        height: 630,
+        alt: "The Sayan Villas - Luxury pool villa with stunning rice field views in Ubud Bali",
+      },
+    ],
+  },
+};
+
+// Structured Data for SEO
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "LuxuryHotel",
+  "name": "The Sayan Villas",
+  "description": "Ultra-luxury private villas in Ubud, Bali featuring infinity pools, rice field views, and personalized butler service.",
+  "url": "https://thesayanvillas.com",
+  "telephone": "+62 361 980642",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Jl. Raya Sayan, Ubud",
+    "addressLocality": "Gianyar",
+    "addressRegion": "Bali",
+    "postalCode": "80571",
+    "addressCountry": "ID"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "-8.5069",
+    "longitude": "115.2625"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "127"
+  },
+  "amenityFeature": [
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Private Infinity Pools",
+      "description": "Each villa features its own stunning infinity pool overlooking the emerald rice terraces"
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Panoramic Rice Field Views",
+      "description": "Wake up to breathtaking vistas of Ubud's iconic rice terraces from every room"
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Personalized Butler Service",
+      "description": "Dedicated butler service ensures your every need is anticipated and fulfilled"
+    }
+  ],
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "One-Bedroom Villa",
+      "description": "Perfect for couples seeking a peaceful escape with private pool and rice field views",
+      "availability": "https://schema.org/InStock"
+    },
+    {
+      "@type": "Offer",
+      "name": "Two-Bedroom Villa",
+      "description": "Ideal for families or friends with spacious living areas and premium amenities",
+      "availability": "https://schema.org/InStock"
+    }
+  ],
+  "sameAs": [
+    "https://www.instagram.com/thesayanvillas",
+    "https://www.facebook.com/thesayanvillas"
+  ]
+};
 
 export default function Home() {
   const features = [
@@ -80,9 +180,19 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen">
-      <Navigation />
-      <Hero />
+    <>
+      {/* Structured Data for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+
+      <main className="min-h-screen">
+        <header>
+          <Navigation />
+        </header>
+
+        <Hero />
 
       {/* Welcome Section */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
@@ -175,7 +285,7 @@ export default function Home() {
                       {experience.actualImage ? (
                         <Image
                           src={experience.actualImage}
-                          alt={experience.title}
+                          alt={`${experience.title} - Authentic Balinese experience at The Sayan Villas Ubud Bali`}
                           fill
                           className="object-cover transition-transform duration-500 group-hover:scale-105"
                         />
@@ -356,6 +466,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-    </div>
+      </main>
+    </>
   );
 }

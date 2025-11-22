@@ -2,8 +2,39 @@ import { Metadata } from 'next';
 import Navigation from '../components/Navigation';
 
 export const metadata: Metadata = {
-  title: 'Contact The Sayan Villas | Book Your Stay in Ubud',
-  description: 'Get in touch with The Sayan Villas Ubud. Plan your Bali getaway and experience refined comfort surrounded by nature.',
+  title: 'Contact The Sayan Villas | Book Luxury Villas in Ubud Bali',
+  description: 'Contact The Sayan Villas to book your luxury private villa in Ubud, Bali. Reserve your stay with infinity pools, rice field views, and personalized butler service. Direct booking for best rates.',
+  keywords: [
+    "contact the sayan villas",
+    "book sayan villas",
+    "ubud villa reservation",
+    "bali luxury villas booking",
+    "thesayanvillas contact",
+    "sayan ubud reservation",
+    "luxury villa bali booking",
+    "private villa contact",
+    "ubud accommodation booking",
+    "bali holiday reservation",
+    "sayan ridge villas contact",
+    "luxury bali getaway"
+  ],
+  alternates: {
+    canonical: "/contact",
+  },
+  openGraph: {
+    type: "website",
+    url: "https://thesayanvillas.com/contact",
+    title: "Contact The Sayan Villas | Book Luxury Villas in Ubud Bali",
+    description: "Contact The Sayan Villas to book your luxury private villa in Ubud, Bali. Reserve your stay with infinity pools and rice field views.",
+    images: [
+      {
+        url: "/images/ornament.webp",
+        width: 1200,
+        height: 630,
+        alt: "Contact The Sayan Villas - Book luxury private villas in Ubud Bali",
+      },
+    ],
+  },
 };
 
 export default function Contact() {

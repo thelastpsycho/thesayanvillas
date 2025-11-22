@@ -4,8 +4,137 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 export const metadata: Metadata = {
-  title: 'Accommodation at The Sayan Villas | One & Two Bedroom Private Villas in Ubud',
-  description: 'Stay in luxury at The Sayan Villas Ubud. Choose from one or two-bedroom villas with private pools and stunning rice field views.',
+  title: 'Luxury Villas Ubud | One & Two Bedroom Private Villas | The Sayan Villas',
+  description: 'Experience ultimate luxury in our one and two-bedroom private villas in Ubud, Bali. Each villa features infinity pools, rice field views, personalized butler service, and authentic Balinese design.',
+  keywords: [
+    "luxury villas ubud",
+    "one bedroom villa ubud",
+    "two bedroom villa bali",
+    "private villas sayan",
+    "ubud luxury accommodation",
+    "infinity pool villas",
+    "rice field view villas",
+    "balinese villa design",
+    "honeymoon villas ubud",
+    "family villas bali",
+    "luxury villa rental",
+    "thesayanvillas accommodation"
+  ],
+  alternates: {
+    canonical: "/accommodation",
+  },
+  openGraph: {
+    type: "website",
+    url: "https://thesayanvillas.com/accommodation",
+    title: "Luxury Villas Ubud | One & Two Bedroom Private Villas | The Sayan Villas",
+    description: "Experience ultimate luxury in our one and two-bedroom private villas in Ubud, Bali. Each villa features infinity pools and rice field views.",
+    images: [
+      {
+        url: "/images/bedroom.webp",
+        width: 1200,
+        height: 630,
+        alt: "Luxury one-bedroom villa with king-size bed and rice field views at The Sayan Villas",
+      },
+    ],
+  },
+};
+
+// Structured Data for Accommodation
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Hotel",
+  "name": "The Sayan Villas - Accommodation",
+  "description": "Luxury one and two-bedroom private villas in Ubud, Bali with infinity pools and rice field views",
+  "url": "https://thesayanvillas.com/accommodation",
+  "telephone": "+62 361 980642",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Jl. Raya Sayan, Ubud",
+    "addressLocality": "Gianyar",
+    "addressRegion": "Bali",
+    "postalCode": "80571",
+    "addressCountry": "ID"
+  },
+  "offers": [
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "HotelRoom",
+        "name": "One-Bedroom Villa",
+        "description": "Perfect for couples seeking a peaceful escape. Elegant design, private pool, and serene rice field views.",
+        "bed": {
+          "@type": "BedDetails",
+          "numberOfBeds": "1",
+          "typeOfBed": "King"
+        },
+        "occupancy": {
+          "@type": "QuantitativeValue",
+          "maxValue": "2"
+        },
+        "floorSize": {
+          "@type": "QuantitativeValue",
+          "value": "120",
+          "unitCode": "MTK"
+        }
+      },
+      "availability": "https://schema.org/InStock"
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "HotelRoom",
+        "name": "Two-Bedroom Villa",
+        "description": "Ideal for families or friends. Expansive spaces, modern amenities, and a seamless blend of comfort and nature.",
+        "bed": {
+          "@type": "BedDetails",
+          "numberOfBeds": "2",
+          "typeOfBed": "King"
+        },
+        "occupancy": {
+          "@type": "QuantitativeValue",
+          "maxValue": "4"
+        },
+        "floorSize": {
+          "@type": "QuantitativeValue",
+          "value": "220",
+          "unitCode": "MTK"
+        }
+      },
+      "availability": "https://schema.org/InStock"
+    }
+  ],
+  "amenityFeature": [
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Air Conditioning",
+      "value": "True"
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "WiFi",
+      "value": "High-speed internet throughout"
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Daily Housekeeping",
+      "value": "Attentive service included"
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Welcome Basket",
+      "value": "Local treats and refreshments"
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Complimentary Breakfast",
+      "value": "Fresh local ingredients"
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Airport Transfer",
+      "value": "Complimentary pick-up service"
+    }
+  ]
 };
 
 export default function Accommodation() {
@@ -44,8 +173,15 @@ export default function Accommodation() {
   ];
 
   return (
-    <div className="min-h-screen bg-soft-white">
-      <Navigation />
+    <>
+      {/* Structured Data for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+
+      <div className="min-h-screen bg-soft-white">
+        <Navigation />
 
       {/* Hero Section */}
       <section className="relative h-96 flex items-center justify-center overflow-hidden">
@@ -214,6 +350,7 @@ export default function Accommodation() {
           </Link>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 }

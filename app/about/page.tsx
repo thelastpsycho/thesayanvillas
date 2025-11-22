@@ -28,7 +28,7 @@ export default function About() {
       </section>
 
       {/* Content Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
         <div className="prose prose-lg max-w-none">
           <p className="text-lg leading-relaxed text-charcoal mb-8 text-center font-light">
             Tucked away in the serene landscapes of Sayan, Ubud, The Sayan Villas offer a retreat like no other.
@@ -36,14 +36,43 @@ export default function About() {
             to the gentle rhythm of tropical life.
           </p>
 
-          <p className="text-lg leading-relaxed text-charcoal mb-8 text-center font-light">
+          <p className="text-lg leading-relaxed text-charcoal mb-16 text-center font-light">
             Experience personalized comfort, refined interiors, and the soothing connection to nature that defines
             the true essence of Ubud living.
           </p>
         </div>
 
+        {/* Balinese Culture Section with Image */}
+        <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
+          <div className="space-y-6">
+            <h2 className="font-serif text-3xl md:text-4xl font-light text-charcoal">
+              Authentic Balinese Heritage
+            </h2>
+            <p className="text-lg text-charcoal/80 leading-relaxed font-light">
+              Our villas honor the rich cultural heritage of Bali through thoughtful architectural details,
+              traditional materials, and locally sourced artisanal elements that tell the story of our island home.
+            </p>
+            <p className="text-lg text-charcoal/80 leading-relaxed font-light">
+              From hand-carved wooden ornaments to natural stone accents, every element reflects
+              the deep connection between Balinese culture and the natural environment that has sustained our traditions for centuries.
+            </p>
+          </div>
+          <div className="relative">
+            <img
+              src="/images/ornament.webp"
+              alt="Traditional Balinese decorative ornament"
+              className="w-full h-80 object-cover rounded-lg shadow-xl"
+            />
+            <div className="absolute -bottom-6 -right-6 bg-muted-gold text-soft-white p-4 rounded-lg shadow-lg max-w-xs">
+              <p className="text-sm font-medium">
+                Handcrafted by local artisans using traditional techniques passed down through generations.
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* Features Grid */}
-        <div className="grid md:grid-cols-3 gap-12 mt-20">
+        <div className="grid md:grid-cols-3 gap-12 mb-20">
           <div className="text-center">
             <div className="w-20 h-20 bg-muted-gold/20 rounded-full flex items-center justify-center mx-auto mb-6">
               <svg className="w-10 h-10 text-muted-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -82,7 +111,7 @@ export default function About() {
         </div>
 
         {/* Call to Action */}
-        <div className="text-center mt-20">
+        <div className="text-center">
           <Link
             href="/contact"
             className="inline-flex items-center px-8 py-4 bg-charcoal text-soft-white hover:bg-muted-gold transition-all duration-300 transform hover:scale-105 font-medium"

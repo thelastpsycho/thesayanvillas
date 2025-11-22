@@ -20,7 +20,9 @@ export default function Accommodation() {
         'Rice field views from every room'
       ],
       size: '120 sqm',
-      guests: '2 Adults'
+      guests: '2 Adults',
+      image: '/images/bedroom.webp',
+      imageAlt: 'Luxurious one-bedroom villa with king-size bed and rice field views'
     },
     {
       title: 'Two-Bedroom Villa',
@@ -34,7 +36,9 @@ export default function Accommodation() {
         'Panoramic rice field views'
       ],
       size: '220 sqm',
-      guests: '4 Adults'
+      guests: '4 Adults',
+      image: '/images/dining_room.webp',
+      imageAlt: 'Spacious two-bedroom villa with elegant dining area'
     }
   ];
 
@@ -44,9 +48,14 @@ export default function Accommodation() {
 
       {/* Hero Section */}
       <section className="relative h-96 flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-charcoal/60 to-charcoal/40">
-          <div className="w-full h-full bg-gradient-to-br from-green-900/30 via-green-800/40 to-yellow-700/30" />
+        <div className="absolute inset-0">
+          <img
+            src="/images/dining_room2.webp"
+            alt="Elegant villa interior with Balinese design"
+            className="w-full h-full object-cover"
+          />
         </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-charcoal/60 to-charcoal/40" />
         <div className="relative z-10 text-center px-4">
           <h1 className="font-serif text-4xl md:text-6xl font-light text-soft-white mb-4">
             Your Private Sanctuary Awaits
@@ -70,9 +79,13 @@ export default function Accommodation() {
         <div className="grid lg:grid-cols-2 gap-16">
           {villas.map((villa, index) => (
             <div key={index} className="group">
-              {/* Villa Image Placeholder */}
+              {/* Villa Image */}
               <div className="relative h-64 mb-8 overflow-hidden rounded-lg">
-                <div className="w-full h-full bg-gradient-to-br from-sand to-beige" />
+                <img
+                  src={villa.image}
+                  alt={villa.imageAlt}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-charcoal/20 to-transparent" />
               </div>
 

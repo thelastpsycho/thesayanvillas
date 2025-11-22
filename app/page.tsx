@@ -37,22 +37,26 @@ export default function Home() {
     {
       title: 'Rice Field Trekking',
       description: 'Guided walks through the stunning Sayan rice terraces with local experts.',
-      image: 'trekking'
+      image: 'trekking',
+      actualImage: '/images/outdoor.webp'
     },
     {
       title: 'Traditional Balinese Cooking',
       description: 'Learn authentic Balinese recipes using fresh, locally sourced ingredients.',
-      image: 'cooking'
+      image: 'cooking',
+      actualImage: '/images/dining_room2.webp'
     },
     {
-      title: 'Yoga & Meditation',
-      description: 'Begin your day with sunrise yoga sessions overlooking the lush landscapes.',
-      image: 'yoga'
+      title: 'Poolside Relaxation',
+      description: 'Unwind in your private infinity pool overlooking the emerald rice terraces.',
+      image: 'pool',
+      actualImage: '/images/pool_villa.webp'
     },
     {
-      title: 'Spa & Wellness',
-      description: 'Indulge in traditional Balinese spa treatments in the privacy of your villa.',
-      image: 'spa'
+      title: 'Sunset Terrace Dining',
+      description: 'Enjoy romantic dinners on your private terrace as the sun sets over the valley.',
+      image: 'dining',
+      actualImage: '/images/terrace.webp'
     }
   ];
 
@@ -152,15 +156,22 @@ export default function Home() {
                 style={{ animationDelay: `${index * 150}ms` }}
               >
                 <div className="relative h-48 mb-4 overflow-hidden rounded-lg">
-                  <div className={`
-                    w-full h-full transition-transform duration-500 group-hover:scale-105
-                    ${experience.image === 'trekking' ? 'bg-gradient-to-br from-green-600/30 to-green-700/40' :
-                      experience.image === 'cooking' ? 'bg-gradient-to-br from-orange-600/20 to-red-600/30' :
-                      experience.image === 'yoga' ? 'bg-gradient-to-br from-purple-600/20 to-pink-600/30' :
-                      'bg-gradient-to-br from-blue-600/20 to-cyan-600/30'}
-                  `}>
-                    <div className="w-full h-full bg-gradient-to-t from-charcoal/40 via-charcoal/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
+                  {experience.actualImage ? (
+                    <img
+                      src={experience.actualImage}
+                      alt={experience.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className={`
+                      w-full h-full transition-transform duration-500 group-hover:scale-105
+                      ${experience.image === 'trekking' ? 'bg-gradient-to-br from-green-600/30 to-green-700/40' :
+                        experience.image === 'cooking' ? 'bg-gradient-to-br from-orange-600/20 to-red-600/30' :
+                        experience.image === 'yoga' ? 'bg-gradient-to-br from-purple-600/20 to-pink-600/30' :
+                        'bg-gradient-to-br from-blue-600/20 to-cyan-600/30'}
+                    `} />
+                  )}
+                  <div className="w-full h-full bg-gradient-to-t from-charcoal/40 via-charcoal/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-soft-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 group-hover:translate-y-0">
                       <svg className="w-8 h-8 mx-auto mb-2" fill="currentColor" viewBox="0 0 20 20">

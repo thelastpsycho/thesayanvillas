@@ -12,22 +12,24 @@ export default function Gallery() {
     {
       title: 'Villas & Interiors',
       description: 'Elegant spaces designed for comfort and tranquility',
-      images: Array(6).fill(null)
-    },
-    {
-      title: 'Rice Field Views',
-      description: 'Breathtaking vistas of Ubud\'s iconic landscapes',
-      images: Array(6).fill(null)
+      images: [
+        { src: '/images/bedroom.webp', alt: 'Luxury bedroom with rice field views' },
+        { src: '/images/dining_room.webp', alt: 'Elegant dining area' },
+        { src: '/images/dining_room2.webp', alt: 'Intimate dining setting' },
+        { src: '/images/ornament.webp', alt: 'Balinese decorative details' },
+        null,
+        null
+      ]
     },
     {
       title: 'Pool & Outdoor Areas',
       description: 'Private sanctuaries for relaxation and rejuvenation',
-      images: Array(4).fill(null)
-    },
-    {
-      title: 'Details & Ambiance',
-      description: 'Thoughtful touches that define luxury living',
-      images: Array(4).fill(null)
+      images: [
+        { src: '/images/pool_villa.webp', alt: 'Private infinity pool with villa' },
+        { src: '/images/pool.webp', alt: 'Stunning pool area' },
+        { src: '/images/outdoor.webp', alt: 'Beautiful outdoor living space' },
+        { src: '/images/terrace.webp', alt: 'Scenic terrace with views' }
+      ]
     }
   ];
 
@@ -37,9 +39,14 @@ export default function Gallery() {
 
       {/* Hero Section */}
       <section className="relative h-96 flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-charcoal/60 to-charcoal/40">
-          <div className="w-full h-full bg-gradient-to-br from-green-900/30 via-green-800/40 to-yellow-700/30" />
+        <div className="absolute inset-0">
+          <img
+            src="/images/terrace.webp"
+            alt="Beautiful terrace with panoramic views"
+            className="w-full h-full object-cover"
+          />
         </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-charcoal/60 to-charcoal/40" />
         <div className="relative z-10 text-center px-4">
           <h1 className="font-serif text-4xl md:text-6xl font-light text-soft-white mb-4">
             Gallery
@@ -78,32 +85,45 @@ export default function Gallery() {
                 category.images.length === 6 ? 'md:grid-cols-2 lg:grid-cols-3' :
                 'grid-cols-1'
               }`}>
-                {category.images.map((_, imageIndex) => (
+                {category.images.map((image, imageIndex) => (
                   <div key={imageIndex} className="group relative overflow-hidden rounded-lg">
-                    {/* Placeholder Image */}
-                    <div className={`
-                      w-full h-64 bg-gradient-to-br transition-transform duration-500 group-hover:scale-105
-                      ${imageIndex % 4 === 0 ? 'from-sand to-beige' :
-                        imageIndex % 4 === 1 ? 'from-beige to-sand' :
-                        imageIndex % 4 === 2 ? 'from-muted-gold/30 to-sand' :
-                        'from-sand to-muted-gold/30'}
-                    `}>
-                      <div className="w-full h-full bg-gradient-to-t from-charcoal/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    </div>
+                    {image ? (
+                      <>
+                        {/* Actual Image */}
+                        <div className="w-full h-64 overflow-hidden">
+                          <img
+                            src={image.src}
+                            alt={image.alt}
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          />
+                        </div>
 
-                    {/* Hover Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-charcoal/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end">
-                      <div className="p-4">
-                        <p className="text-soft-white text-sm font-light">
-                          {category.title} - Image {imageIndex + 1}
-                        </p>
+                        {/* Hover Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-charcoal/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end">
+                          <div className="p-4">
+                            <p className="text-soft-white text-sm font-light">
+                              {image.alt}
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Image Number */}
+                        <div className="absolute top-4 right-4 w-8 h-8 bg-soft-white/90 rounded-full flex items-center justify-center text-charcoal text-sm font-light opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          {imageIndex + 1}
+                        </div>
+                      </>
+                    ) : (
+                      /* Placeholder for empty slots */
+                      <div className={`
+                        w-full h-64 bg-gradient-to-br transition-transform duration-500 group-hover:scale-105
+                        ${imageIndex % 4 === 0 ? 'from-sand to-beige' :
+                          imageIndex % 4 === 1 ? 'from-beige to-sand' :
+                          imageIndex % 4 === 2 ? 'from-muted-gold/30 to-sand' :
+                          'from-sand to-muted-gold/30'}
+                      `}>
+                        <div className="w-full h-full bg-gradient-to-t from-charcoal/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       </div>
-                    </div>
-
-                    {/* Image Number */}
-                    <div className="absolute top-4 right-4 w-8 h-8 bg-soft-white/90 rounded-full flex items-center justify-center text-charcoal text-sm font-light opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      {imageIndex + 1}
-                    </div>
+                    )}
                   </div>
                 ))}
               </div>

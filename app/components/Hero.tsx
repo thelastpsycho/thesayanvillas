@@ -5,10 +5,14 @@ export default function Hero() {
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <div className="w-full h-full bg-gradient-to-b from-charcoal/20 to-charcoal/40">
-          {/* Placeholder for rice field image */}
-          <div className="w-full h-full bg-gradient-to-br from-green-900/30 via-green-800/40 to-yellow-700/30" />
+        <div className="w-full h-full">
+          <img
+            src="/images/pool_villa.webp"
+            alt="Luxury pool villa with stunning rice field views"
+            className="w-full h-full object-cover"
+          />
         </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-charcoal/40 via-charcoal/20 to-charcoal/60" />
       </div>
 
       {/* Overlay Content */}

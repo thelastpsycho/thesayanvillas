@@ -17,14 +17,14 @@ export default function Contact() {
           <div className="w-full h-full bg-gradient-to-br from-green-900/30 via-green-800/40 to-yellow-700/30" />
         </div>
         <div className="relative z-10 text-center px-4">
-          <h1 className="font-serif text-4xl md:text-6xl font-light text-soft-white mb-4">
+          <h1 className="font-sans text-4xl md:text-6xl font-light text-soft-white mb-4">
             Contact
           </h1>
           <p className="text-xl text-soft-white/90 font-light max-w-2xl mx-auto">
             Plan your escape to Ubud.
           </p>
           <p className="text-lg text-soft-white/80 font-light max-w-2xl mx-auto mt-2">
-            We'd love to welcome you to The Sayan Villas — your private retreat amidst Bali's most enchanting landscapes.
+            We&apos;d love to welcome you to The Sayan Villas — your private retreat amidst Bali&apos;s most enchanting landscapes.
           </p>
         </div>
       </section>
@@ -35,7 +35,7 @@ export default function Contact() {
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Contact Form */}
             <div>
-              <h2 className="font-serif text-3xl font-light text-charcoal mb-8">
+              <h2 className="font-sans text-3xl font-light text-charcoal mb-8">
                 Send us a Message
               </h2>
 
@@ -163,7 +163,7 @@ export default function Contact() {
             <div className="space-y-12">
               {/* Contact Details */}
               <div>
-                <h2 className="font-serif text-3xl font-light text-charcoal mb-8">
+                <h2 className="font-sans text-3xl font-light text-charcoal mb-8">
                   Get in Touch
                 </h2>
 
@@ -175,7 +175,7 @@ export default function Contact() {
                       </svg>
                     </div>
                     <div>
-                      <h3 className="font-serif text-xl font-light text-charcoal mb-1">Email</h3>
+                      <h3 className="font-sans text-xl font-light text-charcoal mb-1">Email</h3>
                       <p className="text-charcoal/80">info@thesayanvillas.com</p>
                       <p className="text-charcoal/80">reservations@thesayanvillas.com</p>
                     </div>
@@ -188,7 +188,7 @@ export default function Contact() {
                       </svg>
                     </div>
                     <div>
-                      <h3 className="font-serif text-xl font-light text-charcoal mb-1">Phone</h3>
+                      <h3 className="font-sans text-xl font-light text-charcoal mb-1">Phone</h3>
                       <p className="text-charcoal/80">+62 361 123456</p>
                       <p className="text-charcoal/80">+62 812 3456 7890 (WhatsApp)</p>
                     </div>
@@ -202,7 +202,7 @@ export default function Contact() {
                       </svg>
                     </div>
                     <div>
-                      <h3 className="font-serif text-xl font-light text-charcoal mb-1">Location</h3>
+                      <h3 className="font-sans text-xl font-light text-charcoal mb-1">Location</h3>
                       <p className="text-charcoal/80">Jl. Raya Sayan, Ubud</p>
                       <p className="text-charcoal/80">Bali 80571, Indonesia</p>
                     </div>
@@ -212,7 +212,7 @@ export default function Contact() {
 
               {/* Operating Hours */}
               <div>
-                <h3 className="font-serif text-xl font-light text-charcoal mb-4">Operating Hours</h3>
+                <h3 className="font-sans text-xl font-light text-charcoal mb-4">Operating Hours</h3>
                 <div className="space-y-2 text-charcoal/80">
                   <p className="flex justify-between">
                     <span>Check-in</span>
@@ -235,7 +235,7 @@ export default function Contact() {
 
               {/* Social Media */}
               <div>
-                <h3 className="font-serif text-xl font-light text-charcoal mb-4">Follow Us</h3>
+                <h3 className="font-sans text-xl font-light text-charcoal mb-4">Follow Us</h3>
                 <div className="flex space-x-4">
                   <a href="#" className="w-10 h-10 bg-muted-gold/20 rounded-full flex items-center justify-center hover:bg-muted-gold transition-colors">
                     <svg className="w-5 h-5 text-charcoal" fill="currentColor" viewBox="0 0 24 24">

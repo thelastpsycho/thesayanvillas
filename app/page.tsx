@@ -1,6 +1,7 @@
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Home() {
   const features = [
@@ -86,11 +87,11 @@ export default function Home() {
       {/* Welcome Section */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
         <div className="text-center space-y-6">
-          <h2 className="font-serif text-4xl md:text-5xl font-light text-charcoal animate-fade-in">
+          <h2 className="font-sans text-4xl md:text-5xl font-light text-charcoal animate-fade-in">
             Welcome to Your Private Sanctuary
           </h2>
           <p className="text-lg md:text-xl text-charcoal/80 leading-relaxed font-light max-w-3xl mx-auto animate-fade-in animate-delay-200">
-            The Sayan Villas represent the pinnacle of Balinese luxury hospitality. Nestled in the heart of Ubud's most prestigious location,
+            The Sayan Villas represent the pinnacle of Balinese luxury hospitality. Nestled in the heart of Ubud&apos;s most prestigious location,
             our exclusive villa complex offers an intimate escape where contemporary design meets timeless Balinese architecture.
           </p>
           <p className="text-lg text-charcoal/80 leading-relaxed font-light max-w-3xl mx-auto animate-fade-in animate-delay-300">
@@ -104,7 +105,7 @@ export default function Home() {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-warm-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="font-serif text-4xl md:text-5xl font-light text-charcoal mb-6">
+            <h2 className="font-sans text-4xl md:text-5xl font-light text-charcoal mb-6">
               Exquisite Villa Features
             </h2>
             <p className="text-lg text-charcoal/80 font-light max-w-2xl mx-auto">
@@ -124,7 +125,7 @@ export default function Home() {
                     {feature.icon}
                   </div>
                 </div>
-                <h3 className="font-serif text-2xl font-light text-charcoal mb-4">
+                <h3 className="font-sans text-2xl font-light text-charcoal mb-4">
                   {feature.title}
                 </h3>
                 <p className="text-charcoal/70 leading-relaxed font-light">
@@ -140,7 +141,7 @@ export default function Home() {
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="font-serif text-4xl md:text-5xl font-light text-charcoal mb-6">
+            <h2 className="font-sans text-4xl md:text-5xl font-light text-charcoal mb-6">
               Curated Experiences
             </h2>
             <p className="text-lg text-charcoal/80 font-light max-w-2xl mx-auto">
@@ -157,10 +158,11 @@ export default function Home() {
               >
                 <div className="relative h-48 mb-4 overflow-hidden rounded-lg">
                   {experience.actualImage ? (
-                    <img
+                    <Image
                       src={experience.actualImage}
                       alt={experience.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   ) : (
                     <div className={`
@@ -181,7 +183,7 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-                <h3 className="font-serif text-xl font-light text-charcoal mb-2 group-hover:text-muted-gold transition-colors">
+                <h3 className="font-sans text-xl font-light text-charcoal mb-2 group-hover:text-muted-gold transition-colors">
                   {experience.title}
                 </h3>
                 <p className="text-charcoal/70 text-sm font-light leading-relaxed">
@@ -197,7 +199,7 @@ export default function Home() {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-warm-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="font-serif text-4xl md:text-5xl font-light text-charcoal mb-6">
+            <h2 className="font-sans text-4xl md:text-5xl font-light text-charcoal mb-6">
               Guest Experiences
             </h2>
             <p className="text-lg text-charcoal/80 font-light max-w-2xl mx-auto">
@@ -216,7 +218,7 @@ export default function Home() {
                   <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                 </svg>
                 <p className="text-charcoal/80 mb-4 font-light leading-relaxed italic">
-                  "{testimonial.text}"
+                  &ldquo;{testimonial.text}&rdquo;
                 </p>
                 <div>
                   <p className="text-charcoal font-medium">{testimonial.author}</p>
@@ -234,12 +236,12 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8 animate-fade-in-left">
               <div>
-                <h2 className="font-serif text-4xl md:text-5xl font-light text-charcoal mb-6">
+                <h2 className="font-sans text-4xl md:text-5xl font-light text-charcoal mb-6">
                   Prime Location in Sayan
                 </h2>
                 <p className="text-lg text-charcoal/80 leading-relaxed font-light mb-6">
                   Situated in the prestigious Sayan ridge, our villas offer the perfect balance of seclusion and accessibility.
-                  Experience the spiritual heart of Bali while being just minutes from Ubud's cultural attractions.
+                  Experience the spiritual heart of Bali while being just minutes from Ubud&apos;s cultural attractions.
                 </p>
                 <p className="text-lg text-charcoal/80 leading-relaxed font-light">
                   The Sayan area is renowned for its breathtaking landscapes, traditional Balinese culture, and world-class wellness retreats.
@@ -253,7 +255,7 @@ export default function Home() {
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
                   <div>
-                    <h4 className="font-serif text-lg text-charcoal">10 minutes to Ubud Center</h4>
+                    <h4 className="font-sans text-lg text-charcoal">10 minutes to Ubud Center</h4>
                     <p className="text-charcoal/70 font-light">Easy access to markets, restaurants, and cultural sites</p>
                   </div>
                 </div>
@@ -263,7 +265,7 @@ export default function Home() {
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
                   <div>
-                    <h4 className="font-serif text-lg text-charcoal">45 minutes from Ngurah Rai Airport</h4>
+                    <h4 className="font-sans text-lg text-charcoal">45 minutes from Ngurah Rai Airport</h4>
                     <p className="text-charcoal/70 font-light">Convenient transfer through scenic Balinese countryside</p>
                   </div>
                 </div>
@@ -273,7 +275,7 @@ export default function Home() {
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
                   <div>
-                    <h4 className="font-serif text-lg text-charcoal">Walking distance to famous Sayan Ridge</h4>
+                    <h4 className="font-sans text-lg text-charcoal">Walking distance to famous Sayan Ridge</h4>
                     <p className="text-charcoal/70 font-light">Perfect for sunrise viewing and nature walks</p>
                   </div>
                 </div>
@@ -299,7 +301,7 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
-                  <h3 className="font-serif text-2xl font-light mb-2">Find Us in Paradise</h3>
+                  <h3 className="font-sans text-2xl font-light mb-2">Find Us in Paradise</h3>
                   <p className="text-soft-white/80">Jl. Raya Sayan, Ubud, Bali</p>
                 </div>
               </div>
@@ -311,7 +313,7 @@ export default function Home() {
       {/* Final CTA Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-charcoal">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="font-serif text-4xl md:text-5xl font-light text-soft-white mb-6">
+          <h2 className="font-sans text-4xl md:text-5xl font-light text-soft-white mb-6">
             Begin Your Journey to Tranquility
           </h2>
           <p className="text-xl text-soft-white/80 mb-8 font-light leading-relaxed">

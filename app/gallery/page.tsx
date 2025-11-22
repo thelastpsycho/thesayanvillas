@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Navigation from '../components/Navigation';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'Gallery | Explore The Sayan Villas in Ubud',
@@ -40,15 +41,17 @@ export default function Gallery() {
       {/* Hero Section */}
       <section className="relative h-96 flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img
+          <Image
             src="/images/terrace.webp"
             alt="Beautiful terrace with panoramic views"
+            fill
             className="w-full h-full object-cover"
+            priority
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-charcoal/60 to-charcoal/40" />
         <div className="relative z-10 text-center px-4">
-          <h1 className="font-serif text-4xl md:text-6xl font-light text-soft-white mb-4">
+          <h1 className="font-sans text-4xl md:text-6xl font-light text-soft-white mb-4">
             Gallery
           </h1>
           <p className="text-xl text-soft-white/90 font-light max-w-2xl mx-auto">
@@ -70,7 +73,7 @@ export default function Gallery() {
           <div key={categoryIndex} className="mb-20">
             {/* Category Header */}
             <div className="text-center mb-12 px-4">
-              <h2 className="font-serif text-3xl md:text-4xl font-light text-charcoal mb-4">
+              <h2 className="font-sans text-3xl md:text-4xl font-light text-charcoal mb-4">
                 {category.title}
               </h2>
               <p className="text-soft-gray text-lg font-light max-w-2xl mx-auto">
@@ -91,9 +94,10 @@ export default function Gallery() {
                       <>
                         {/* Actual Image */}
                         <div className="w-full h-64 overflow-hidden">
-                          <img
+                          <Image
                             src={image.src}
                             alt={image.alt}
+                            fill
                             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                           />
                         </div>
@@ -135,7 +139,7 @@ export default function Gallery() {
       {/* Call to Action */}
       <section className="py-20 px-4 bg-warm-white">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="font-serif text-3xl font-light text-charcoal mb-6">
+          <h2 className="font-sans text-3xl font-light text-charcoal mb-6">
             Ready to Experience It in Person?
           </h2>
           <p className="text-charcoal/80 mb-8 font-light text-lg">

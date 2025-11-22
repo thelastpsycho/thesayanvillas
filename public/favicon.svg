@@ -1,0 +1,41 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="32" height="32" rx="4" fill="#FDFCF7"/>
+
+  <!-- Simplified logo elements -->
+  <g transform="translate(6, 8)">
+    <!-- Left palm frond -->
+    <path d="M0 8 Q-0.5 6, 0 4 Q0.5 6, 0 8"
+          stroke="#D4BFA0"
+          stroke-width="0.8"
+          fill="none"
+          stroke-linecap="round"/>
+    <path d="M2 8 Q1.5 7, 2 5.5 Q2.5 7, 2 8"
+          stroke="#D4BFA0"
+          stroke-width="0.6"
+          fill="none"
+          stroke-linecap="round"
+          opacity="0.8"/>
+
+    <!-- Center circle -->
+    <circle cx="5" cy="8" r="1" fill="#D4BFA0"/>
+
+    <!-- Right palm frond -->
+    <path d="M10 8 Q9.5 6, 10 4 Q10.5 6, 10 8"
+          stroke="#D4BFA0"
+          stroke-width="0.8"
+          fill="none"
+          stroke-linecap="round"/>
+    <path d="M8 8 Q7.5 7, 8 5.5 Q8.5 7, 8 8"
+          stroke="#D4BFA0"
+          stroke-width="0.6"
+          fill="none"
+          stroke-linecap="round"
+          opacity="0.8"/>
+  </g>
+
+  <!-- "SV" initials -->
+  <text x="11" y="25" font-family="Nunito, sans-serif" font-size="6" font-weight="600" fill="#2C2C2C" text-anchor="middle">
+    SV
+  </text>
+</svg>

@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Navigation from '../components/Navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'Accommodation at The Sayan Villas | One & Two Bedroom Private Villas in Ubud',
@@ -49,15 +50,17 @@ export default function Accommodation() {
       {/* Hero Section */}
       <section className="relative h-96 flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img
+          <Image
             src="/images/dining_room2.webp"
             alt="Elegant villa interior with Balinese design"
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
+            priority
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-charcoal/60 to-charcoal/40" />
         <div className="relative z-10 text-center px-4">
-          <h1 className="font-serif text-4xl md:text-6xl font-light text-soft-white mb-4">
+          <h1 className="font-sans text-4xl md:text-6xl font-light text-soft-white mb-4">
             Your Private Sanctuary Awaits
           </h1>
           <p className="text-xl text-soft-white/90 font-light max-w-2xl mx-auto">
@@ -81,10 +84,11 @@ export default function Accommodation() {
             <div key={index} className="group">
               {/* Villa Image */}
               <div className="relative h-64 mb-8 overflow-hidden rounded-lg">
-                <img
+                <Image
                   src={villa.image}
                   alt={villa.imageAlt}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-charcoal/20 to-transparent" />
               </div>
@@ -92,7 +96,7 @@ export default function Accommodation() {
               {/* Villa Details */}
               <div className="space-y-4">
                 <div className="flex justify-between items-start">
-                  <h3 className="font-serif text-3xl font-light text-charcoal">
+                  <h3 className="font-sans text-3xl font-light text-charcoal">
                     {villa.title}
                   </h3>
                   <div className="text-right text-sm text-soft-gray">
@@ -124,7 +128,7 @@ export default function Accommodation() {
       {/* Amenities Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-warm-white">
         <div className="max-w-6xl mx-auto">
-          <h2 className="font-serif text-4xl font-light text-charcoal text-center mb-12">
+          <h2 className="font-sans text-4xl font-light text-charcoal text-center mb-12">
             Villa Amenities
           </h2>
 
@@ -135,7 +139,7 @@ export default function Accommodation() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
                 </svg>
               </div>
-              <h4 className="font-serif text-xl font-light text-charcoal mb-2">Air Conditioning</h4>
+              <h4 className="font-sans text-xl font-light text-charcoal mb-2">Air Conditioning</h4>
               <p className="text-soft-gray text-sm">Climate control for your comfort</p>
             </div>
 
@@ -145,7 +149,7 @@ export default function Accommodation() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 1112l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2M3 13a4 4 0 104 4h4a4 4 0 104-4H3z" />
                 </svg>
               </div>
-              <h4 className="font-serif text-xl font-light text-charcoal mb-2">WiFi</h4>
+              <h4 className="font-sans text-xl font-light text-charcoal mb-2">WiFi</h4>
               <p className="text-soft-gray text-sm">High-speed internet throughout</p>
             </div>
 
@@ -155,7 +159,7 @@ export default function Accommodation() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h4 className="font-serif text-xl font-light text-charcoal mb-2">Daily Housekeeping</h4>
+              <h4 className="font-sans text-xl font-light text-charcoal mb-2">Daily Housekeeping</h4>
               <p className="text-soft-gray text-sm">Attentive service included</p>
             </div>
 
@@ -165,7 +169,7 @@ export default function Accommodation() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
                 </svg>
               </div>
-              <h4 className="font-serif text-xl font-light text-charcoal mb-2">Welcome Basket</h4>
+              <h4 className="font-sans text-xl font-light text-charcoal mb-2">Welcome Basket</h4>
               <p className="text-soft-gray text-sm">Local treats and refreshments</p>
             </div>
 
@@ -175,7 +179,7 @@ export default function Accommodation() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
               </div>
-              <h4 className="font-serif text-xl font-light text-charcoal mb-2">Complimentary Breakfast</h4>
+              <h4 className="font-sans text-xl font-light text-charcoal mb-2">Complimentary Breakfast</h4>
               <p className="text-soft-gray text-sm">Fresh local ingredients</p>
             </div>
 
@@ -186,7 +190,7 @@ export default function Accommodation() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
               </div>
-              <h4 className="font-serif text-xl font-light text-charcoal mb-2">Airport Transfer</h4>
+              <h4 className="font-sans text-xl font-light text-charcoal mb-2">Airport Transfer</h4>
               <p className="text-soft-gray text-sm">Complimentary pick-up service</p>
             </div>
           </div>
@@ -196,8 +200,8 @@ export default function Accommodation() {
       {/* Call to Action */}
       <section className="py-20 px-4 text-center">
         <div className="max-w-2xl mx-auto">
-          <h2 className="font-serif text-3xl font-light text-charcoal mb-6">
-            Ready to Experience Ubud's Finest?
+          <h2 className="font-sans text-3xl font-light text-charcoal mb-6">
+            Ready to Experience Ubud&apos;s Finest?
           </h2>
           <p className="text-charcoal/80 mb-8 font-light">
             Book your stay at The Sayan Villas and discover the perfect blend of luxury and tranquility.

@@ -81,16 +81,6 @@ export default function Hero() {
           </div>
         </ScrollAnimation>
       </div>
-
-      {/* Subtle Scroll Indicator */}
-      <ScrollAnimation {...animationPresets.sectionFadeUp} delay={700}>
-        <div className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2">
-          <div className="flex flex-col items-center space-y-1 sm:space-y-2">
-            <span className="text-small text-white/50 !text-white/50">Scroll</span>
-            <div className="w-px h-4 sm:h-6 bg-gradient-to-b from-white/30 to-transparent animate-pulse" />
-          </div>
-        </div>
-      </ScrollAnimation>
     </section>
   );
 }

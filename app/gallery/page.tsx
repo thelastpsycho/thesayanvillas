@@ -1,44 +1,26 @@
-import { Metadata } from 'next';
+'use client';
+
+import { useState, useEffect } from 'react';
 import Navigation from '../components/Navigation';
+import ImageModal from '../components/ImageModal';
 import Image from 'next/image';
 
-export const metadata: Metadata = {
-  title: 'Gallery | The Sayan Villas Luxury Photos | Ubud Bali Resort',
-  description: 'Explore our photo gallery of The Sayan Villas in Ubud, Bali. See luxury private villas, infinity pools, rice field views, and authentic Balinese architecture. Experience paradise through our images.',
-  keywords: [
-    "thesayanvillas gallery",
-    "luxury villas ubud photos",
-    "bali villa images",
-    "sayan resort gallery",
-    "infinity pool photos",
-    "rice field view pictures",
-    "balinese villa gallery",
-    "ubud luxury photos",
-    "private villas bali images",
-    "luxury resort photography",
-    "bali holiday pictures",
-    "sayan ridge villas gallery"
-  ],
-  alternates: {
-    canonical: "/gallery",
-  },
-  openGraph: {
-    type: "website",
-    url: "https://thesayanvillas.com/gallery",
-    title: "Gallery | The Sayan Villas Luxury Photos | Ubud Bali Resort",
-    description: "Explore our photo gallery of luxury private villas, infinity pools, and rice field views at The Sayan Villas in Ubud, Bali.",
-    images: [
-      {
-        url: "/images/bedroom.webp",
-        width: 1200,
-        height: 630,
-        alt: "The Sayan Villas Gallery - Luxury bedroom with stunning rice field views in Ubud Bali",
-      },
-    ],
-  },
-};
-
 export default function Gallery() {
+  // Modal state
+  const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Modal handlers
+  const openModal = (image: { src: string; alt: string }) => {
+    setSelectedImage(image);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedImage(null);
+  };
+
   // Gallery images with categories
   const galleryCategories = [
     {
@@ -69,6 +51,14 @@ export default function Gallery() {
     <div className="min-h-screen bg-soft-white">
       <Navigation />
 
+      {/* Image Modal */}
+      <ImageModal
+        isOpen={isModalOpen}
+        imageSrc={selectedImage?.src || ''}
+        imageAlt={selectedImage?.alt || ''}
+        onClose={closeModal}
+      />
+
       {/* Hero Section */}
       <section className="relative h-96 flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
@@ -76,6 +66,7 @@ export default function Gallery() {
             src="/images/terrace.webp"
             alt="Beautiful terrace with panoramic views"
             fill
+            sizes="100vw"
             className="w-full h-full object-cover"
             priority
           />
@@ -120,25 +111,35 @@ export default function Gallery() {
                 'grid-cols-1'
               }`}>
                 {category.images.map((image, imageIndex) => (
-                  <div key={imageIndex} className="group relative overflow-hidden rounded-lg">
+                  <div key={imageIndex} className="group relative overflow-hidden rounded-lg border-2 border-transparent hover:border-muted-gold/30 transition-all duration-300">
                     {image ? (
                       <>
                         {/* Actual Image */}
-                        <div className="w-full h-64 overflow-hidden">
+                        <div
+                          className="relative w-full h-64 overflow-hidden cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:brightness-110"
+                          onClick={() => openModal(image)}
+                        >
                           <Image
                             src={image.src}
                             alt={image.alt}
                             fill
-                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-110"
                           />
                         </div>
 
                         {/* Hover Overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-charcoal/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end">
+                        <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-charcoal/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end pointer-events-none">
                           <div className="p-4">
-                            <p className="text-soft-white text-sm font-light">
+                            <p className="text-soft-white text-sm font-light mb-2">
                               {image.alt}
                             </p>
+                            <div className="flex items-center gap-2">
+                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                              </svg>
+                              <span className="text-xs">Click to view</span>
+                            </div>
                           </div>
                         </div>
 

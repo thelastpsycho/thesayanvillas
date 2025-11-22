@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
-import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import Link from 'next/link';
 import Image from 'next/image';
+import ScrollAnimation, { animationPresets } from './components/ScrollAnimation';
 
 export const metadata: Metadata = {
   title: "The Sayan Villas | Luxury Private Villas with Infinity Pools in Ubud Bali",
@@ -187,68 +187,74 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
-      <main className="min-h-screen">
-        <header>
-          <Navigation />
-        </header>
-
+    <main className="min-h-screen pt-20">
         <Hero />
 
       {/* Welcome Section */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
         <div className="text-center space-y-6">
-          <h2 className="font-sans text-section font-light text-charcoal animate-fade-in">
-            Welcome to Your Private Sanctuary
-          </h2>
-          <p className="text-body text-charcoal/80 leading-relaxed font-light max-w-3xl mx-auto animate-fade-in animate-delay-200">
-            The Sayan Villas represent the pinnacle of Balinese luxury hospitality. Nestled in the heart of Ubud&apos;s most prestigious location,
-            our exclusive villa complex offers an intimate escape where contemporary design meets timeless Balinese architecture.
-          </p>
-          <p className="text-body text-charcoal/80 leading-relaxed font-light max-w-3xl mx-auto animate-fade-in animate-delay-300">
-            Each villa has been thoughtfully designed to celebrate its natural surroundings, with floor-to-ceiling windows,
-            private infinity pools, and panoramic views of the emerald rice terraces that have made Sayan famous worldwide.
-          </p>
+          <ScrollAnimation {...animationPresets.sectionFadeUp} delay={0}>
+            <h2 className="font-sans text-section font-light text-charcoal">
+              Welcome to Your Private Sanctuary
+            </h2>
+          </ScrollAnimation>
+          <ScrollAnimation {...animationPresets.sectionFadeUp} delay={200}>
+            <p className="text-body text-charcoal/80 leading-relaxed font-light max-w-3xl mx-auto">
+              The Sayan Villas represent the pinnacle of Balinese luxury hospitality. Nestled in the heart of Ubud&apos;s most prestigious location,
+              our exclusive villa complex offers an intimate escape where contemporary design meets timeless Balinese architecture.
+            </p>
+          </ScrollAnimation>
+          <ScrollAnimation {...animationPresets.sectionFadeUp} delay={400}>
+            <p className="text-body text-charcoal/80 leading-relaxed font-light max-w-3xl mx-auto">
+              Each villa has been thoughtfully designed to celebrate its natural surroundings, with floor-to-ceiling windows,
+              private infinity pools, and panoramic views of the emerald rice terraces that have made Sayan famous worldwide.
+            </p>
+          </ScrollAnimation>
         </div>
       </section>
 
       {/* Features Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-warm-white">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="font-sans text-section font-light text-charcoal mb-4">
-              Exquisite Villa Features
-            </h2>
-            <p className="text-body text-charcoal/80 font-light max-w-2xl mx-auto">
-              Experience unparalleled luxury in our thoughtfully designed private villas
-            </p>
-          </div>
+          <ScrollAnimation {...animationPresets.sectionFadeUp} delay={0}>
+            <div className="text-center mb-12">
+              <h2 className="font-sans text-section font-light text-charcoal mb-4">
+                Exquisite Villa Features
+              </h2>
+              <p className="text-body text-charcoal/80 font-light max-w-2xl mx-auto">
+                Experience unparalleled luxury in our thoughtfully designed private villas
+              </p>
+            </div>
+          </ScrollAnimation>
 
           <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
             {features.map((feature, index) => (
-              <div
+              <ScrollAnimation
                 key={index}
-                className="relative group animate-fade-in-up bg-gradient-to-br from-soft-white to-warm-white p-6 rounded-2xl border border-sand/30 hover:border-muted-gold/40 hover:shadow-lg transition-all duration-500"
-                style={{ animationDelay: `${index * 150}ms` }}
+                {...animationPresets.sectionFadeUp}
+                delay={index * 150}
               >
-                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-muted-gold/20 to-transparent group-hover:via-muted-gold/60 transition-all duration-500" />
+                <div className="relative group bg-gradient-to-br from-soft-white to-warm-white p-6 rounded-2xl border border-sand/30 hover:border-muted-gold/40 hover:shadow-lg transition-all duration-500">
+                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-muted-gold/20 to-transparent group-hover:via-muted-gold/60 transition-all duration-500" />
 
-                <div className="flex flex-col items-center text-center">
-                  <div className="w-12 h-12 bg-gradient-to-br from-muted-gold/10 to-muted-gold/5 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <div className="text-muted-gold/80 group-hover:text-muted-gold transition-colors duration-300">
-                      {feature.icon}
+                  <div className="flex flex-col items-center text-center">
+                    <div className="w-12 h-12 bg-gradient-to-br from-muted-gold/10 to-muted-gold/5 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                      <div className="text-muted-gold/80 group-hover:text-muted-gold transition-colors duration-300">
+                        {feature.icon}
+                      </div>
+                    </div>
+
+                    <div className="space-y-2">
+                      <h3 className="font-sans text-subheading font-light text-charcoal group-hover:text-muted-gold transition-colors duration-300">
+                        {feature.title}
+                      </h3>
+                      <p className="text-caption text-charcoal/60 leading-relaxed font-light group-hover:text-charcoal/80 transition-colors duration-300">
+                        {feature.description}
+                      </p>
                     </div>
                   </div>
-
-                  <div className="space-y-2">
-                    <h3 className="font-sans text-subheading font-light text-charcoal group-hover:text-muted-gold transition-colors duration-300">
-                      {feature.title}
-                    </h3>
-                    <p className="text-caption text-charcoal/60 leading-relaxed font-light group-hover:text-charcoal/80 transition-colors duration-300">
-                      {feature.description}
-                    </p>
-                  </div>
                 </div>
-              </div>
+              </ScrollAnimation>
             ))}
           </div>
         </div>
@@ -257,14 +263,16 @@ export default function Home() {
       {/* Experiences Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="font-sans text-section font-light text-charcoal mb-6">
-              Curated Experiences
-            </h2>
-            <p className="text-body text-charcoal/80 font-light max-w-2xl mx-auto">
-              Immerse yourself in authentic Balinese culture and natural beauty
-            </p>
-          </div>
+          <ScrollAnimation {...animationPresets.sectionFadeUp} delay={0}>
+            <div className="text-center mb-16">
+              <h2 className="font-sans text-section font-light text-charcoal mb-6">
+                Curated Experiences
+              </h2>
+              <p className="text-body text-charcoal/80 font-light max-w-2xl mx-auto">
+                Immerse yourself in authentic Balinese culture and natural beauty
+              </p>
+            </div>
+          </ScrollAnimation>
 
           {/* Horizontal Slider Container */}
           <div className="relative">
@@ -276,45 +284,48 @@ export default function Home() {
             <div className="overflow-x-auto scrollbar-hide pb-4">
               <div className="flex gap-6 lg:gap-8 px-2">
                 {experiences.map((experience, index) => (
-                  <div
+                  <ScrollAnimation
                     key={index}
-                    className="group cursor-pointer animate-scale-in flex-shrink-0 w-72 lg:w-80"
-                    style={{ animationDelay: `${index * 150}ms` }}
+                    {...animationPresets.fadeInScale}
+                    delay={index * 100}
+                    duration={600}
                   >
-                    <div className="relative h-48 mb-4 overflow-hidden rounded-lg">
-                      {experience.actualImage ? (
-                        <Image
-                          src={experience.actualImage}
-                          alt={`${experience.title} - Authentic Balinese experience at The Sayan Villas Ubud Bali`}
-                          fill
-                          className="object-cover transition-transform duration-500 group-hover:scale-105"
-                        />
-                      ) : (
-                        <div className={`
-                          w-full h-full transition-transform duration-500 group-hover:scale-105
-                          ${experience.image === 'trekking' ? 'bg-gradient-to-br from-green-600/30 to-green-700/40' :
-                            experience.image === 'cooking' ? 'bg-gradient-to-br from-orange-600/20 to-red-600/30' :
-                            experience.image === 'yoga' ? 'bg-gradient-to-br from-purple-600/20 to-pink-600/30' :
-                            'bg-gradient-to-br from-blue-600/20 to-cyan-600/30'}
-                        `} />
-                      )}
-                      <div className="w-full h-full bg-gradient-to-t from-charcoal/40 via-charcoal/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="text-soft-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 group-hover:translate-y-0">
-                          <svg className="w-8 h-8 mx-auto mb-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
-                          </svg>
-                          <p className="text-caption">Learn More</p>
+                    <div className="group cursor-pointer flex-shrink-0 w-72 lg:w-80">
+                      <div className="relative h-48 mb-4 overflow-hidden rounded-lg">
+                        {experience.actualImage ? (
+                          <Image
+                            src={experience.actualImage}
+                            alt={`${experience.title} - Authentic Balinese experience at The Sayan Villas Ubud Bali`}
+                            fill
+                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                          />
+                        ) : (
+                          <div className={`
+                            w-full h-full transition-transform duration-500 group-hover:scale-105
+                            ${experience.image === 'trekking' ? 'bg-gradient-to-br from-green-600/30 to-green-700/40' :
+                              experience.image === 'cooking' ? 'bg-gradient-to-br from-orange-600/20 to-red-600/30' :
+                              experience.image === 'yoga' ? 'bg-gradient-to-br from-purple-600/20 to-pink-600/30' :
+                              'bg-gradient-to-br from-blue-600/20 to-cyan-600/30'}
+                          `} />
+                        )}
+                        <div className="w-full h-full bg-gradient-to-t from-charcoal/40 via-charcoal/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="text-soft-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 group-hover:translate-y-0">
+                            <svg className="w-8 h-8 mx-auto mb-2" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                            </svg>
+                            <p className="text-caption">Learn More</p>
+                          </div>
                         </div>
                       </div>
+                      <h3 className="font-sans text-subheading font-light text-charcoal mb-2 group-hover:text-muted-gold transition-colors">
+                        {experience.title}
+                      </h3>
+                      <p className="text-caption text-charcoal/70 font-light leading-relaxed">
+                        {experience.description}
+                      </p>
                     </div>
-                    <h3 className="font-sans text-subheading font-light text-charcoal mb-2 group-hover:text-muted-gold transition-colors">
-                      {experience.title}
-                    </h3>
-                    <p className="text-caption text-charcoal/70 font-light leading-relaxed">
-                      {experience.description}
-                    </p>
-                  </div>
+                  </ScrollAnimation>
                 ))}
               </div>
             </div>
@@ -325,37 +336,41 @@ export default function Home() {
       {/* Testimonials Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-warm-white">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="font-sans text-section font-light text-charcoal mb-6">
-              Guest Experiences
-            </h2>
-            <p className="text-body text-charcoal/80 font-light max-w-2xl mx-auto">
-              Discover why our guests return year after year
-            </p>
-          </div>
+          <ScrollAnimation {...animationPresets.sectionFadeUp} delay={0}>
+            <div className="text-center mb-12">
+              <h2 className="font-sans text-section font-light text-charcoal mb-6">
+                Guest Experiences
+              </h2>
+              <p className="text-body text-charcoal/80 font-light max-w-2xl mx-auto">
+                Discover why our guests return year after year
+              </p>
+            </div>
+          </ScrollAnimation>
 
           <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
             {testimonials.map((testimonial, index) => (
-              <div
+              <ScrollAnimation
                 key={index}
-                className="relative group animate-fade-in-up bg-gradient-to-br from-soft-white to-warm-white p-6 rounded-xl border border-sand/30 hover:border-muted-gold/40 hover:shadow-lg transition-all duration-500"
-                style={{ animationDelay: `${index * 150}ms` }}
+                {...animationPresets.sectionFadeUp}
+                delay={index * 150}
               >
-                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-muted-gold/20 to-transparent group-hover:via-muted-gold/60 transition-all duration-500" />
+                <div className="relative group bg-gradient-to-br from-soft-white to-warm-white p-6 rounded-xl border border-sand/30 hover:border-muted-gold/40 hover:shadow-lg transition-all duration-500">
+                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-muted-gold/20 to-transparent group-hover:via-muted-gold/60 transition-all duration-500" />
 
-                <svg className="w-6 h-6 text-muted-gold/30 mb-3 group-hover:text-muted-gold/50 transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                </svg>
-                <p className="text-caption text-charcoal/80 mb-4 font-light leading-relaxed italic group-hover:text-charcoal/90 transition-colors duration-300">
-                  &ldquo;{testimonial.text}&rdquo;
-                </p>
-                <div className="flex justify-between items-center">
-                  <div>
-                    <p className="text-subheading text-charcoal font-light group-hover:text-muted-gold transition-colors duration-300">{testimonial.author}</p>
-                    <p className="text-small text-soft-gray group-hover:text-charcoal/70 transition-colors duration-300">{testimonial.location}</p>
+                  <svg className="w-6 h-6 text-muted-gold/30 mb-3 group-hover:text-muted-gold/50 transition-colors duration-300" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                  </svg>
+                  <p className="text-caption text-charcoal/80 mb-4 font-light leading-relaxed italic group-hover:text-charcoal/90 transition-colors duration-300">
+                    &ldquo;{testimonial.text}&rdquo;
+                  </p>
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <p className="text-subheading text-charcoal font-light group-hover:text-muted-gold transition-colors duration-300">{testimonial.author}</p>
+                      <p className="text-small text-soft-gray group-hover:text-charcoal/70 transition-colors duration-300">{testimonial.location}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </ScrollAnimation>
             ))}
           </div>
         </div>
@@ -365,77 +380,89 @@ export default function Home() {
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div className="space-y-6 animate-fade-in-left">
-              <div>
-                <h2 className="font-sans text-section font-light text-charcoal mb-4">
-                  Prime Location in Sayan
-                </h2>
-                <p className="text-caption text-charcoal/80 leading-relaxed font-light mb-4">
-                  Situated in the prestigious Sayan ridge, our villas offer the perfect balance of seclusion and accessibility.
-                  Experience the spiritual heart of Bali while being just minutes from Ubud&apos;s cultural attractions.
-                </p>
-                <p className="text-caption text-charcoal/80 leading-relaxed font-light">
-                  The Sayan area is renowned for its breathtaking landscapes, traditional Balinese culture, and world-class wellness retreats.
-                </p>
-              </div>
+            <ScrollAnimation {...animationPresets.sectionSlideLeft} delay={0}>
+              <div className="space-y-6">
+                <div>
+                  <h2 className="font-sans text-section font-light text-charcoal mb-4">
+                    Prime Location in Sayan
+                  </h2>
+                  <p className="text-caption text-charcoal/80 leading-relaxed font-light mb-4">
+                    Situated in the prestigious Sayan ridge, our villas offer the perfect balance of seclusion and accessibility.
+                    Experience the spiritual heart of Bali while being just minutes from Ubud&apos;s cultural attractions.
+                  </p>
+                  <p className="text-caption text-charcoal/80 leading-relaxed font-light">
+                    The Sayan area is renowned for its breathtaking landscapes, traditional Balinese culture, and world-class wellness retreats.
+                  </p>
+                </div>
 
-              <div className="space-y-3">
-                <div className="flex items-start space-x-3">
-                  <svg className="w-4 h-4 text-muted-gold mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  <div>
-                    <h4 className="font-sans text-body text-charcoal font-light">10 minutes to Ubud Center</h4>
-                    <p className="text-small text-charcoal/70 font-light">Easy access to markets, restaurants, and cultural sites</p>
+                <div className="space-y-3">
+                  <ScrollAnimation {...animationPresets.sectionFadeUp} delay={200}>
+                    <div className="flex items-start space-x-3">
+                      <svg className="w-4 h-4 text-muted-gold mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                      <div>
+                        <h4 className="font-sans text-body text-charcoal font-light">10 minutes to Ubud Center</h4>
+                        <p className="text-small text-charcoal/70 font-light">Easy access to markets, restaurants, and cultural sites</p>
+                      </div>
+                    </div>
+                  </ScrollAnimation>
+
+                  <ScrollAnimation {...animationPresets.sectionFadeUp} delay={300}>
+                    <div className="flex items-start space-x-3">
+                      <svg className="w-4 h-4 text-muted-gold mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                      <div>
+                        <h4 className="font-sans text-body text-charcoal font-light">45 minutes from Ngurah Rai Airport</h4>
+                        <p className="text-small text-charcoal/70 font-light">Convenient transfer through scenic Balinese countryside</p>
+                      </div>
+                    </div>
+                  </ScrollAnimation>
+
+                  <ScrollAnimation {...animationPresets.sectionFadeUp} delay={400}>
+                    <div className="flex items-start space-x-3">
+                      <svg className="w-4 h-4 text-muted-gold mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                      <div>
+                        <h4 className="font-sans text-body text-charcoal font-light">Walking distance to Sayan Ridge</h4>
+                        <p className="text-small text-charcoal/70 font-light">Perfect for sunrise viewing and nature walks</p>
+                      </div>
+                    </div>
+                  </ScrollAnimation>
+                </div>
+
+                <ScrollAnimation {...animationPresets.sectionFadeUp} delay={500}>
+                  <div className="pt-4">
+                    <Link
+                      href="/contact"
+                      className="inline-flex items-center px-6 py-3 bg-charcoal text-soft-white hover:bg-muted-gold transition-all duration-300 transform hover:scale-105 font-medium text-button-small"
+                    >
+                      Plan Your Visit
+                    </Link>
+                  </div>
+                </ScrollAnimation>
+              </div>
+            </ScrollAnimation>
+
+            <ScrollAnimation {...animationPresets.sectionSlideRight} delay={200}>
+              <div className="relative h-72">
+                <div className="w-full h-full bg-gradient-to-br from-green-700/40 via-yellow-600/30 to-green-800/50 rounded-lg">
+                  <div className="w-full h-full bg-gradient-to-t from-charcoal/20 to-transparent rounded-lg" />
+                </div>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-center text-soft-white">
+                    <svg className="w-12 h-12 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    <h3 className="font-sans text-subheading font-light mb-1">Find Us in Paradise</h3>
+                    <p className="text-small text-soft-white/80">Jl. Raya Sayan, Ubud, Bali</p>
                   </div>
                 </div>
-
-                <div className="flex items-start space-x-3">
-                  <svg className="w-4 h-4 text-muted-gold mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  <div>
-                    <h4 className="font-sans text-body text-charcoal font-light">45 minutes from Ngurah Rai Airport</h4>
-                    <p className="text-small text-charcoal/70 font-light">Convenient transfer through scenic Balinese countryside</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-3">
-                  <svg className="w-4 h-4 text-muted-gold mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  <div>
-                    <h4 className="font-sans text-body text-charcoal font-light">Walking distance to Sayan Ridge</h4>
-                    <p className="text-small text-charcoal/70 font-light">Perfect for sunrise viewing and nature walks</p>
-                  </div>
-                </div>
               </div>
-
-              <div className="pt-4">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center px-6 py-3 bg-charcoal text-soft-white hover:bg-muted-gold transition-all duration-300 transform hover:scale-105 font-medium text-button-small"
-                >
-                  Plan Your Visit
-                </Link>
-              </div>
-            </div>
-
-            <div className="relative h-72 animate-fade-in-right">
-              <div className="w-full h-full bg-gradient-to-br from-green-700/40 via-yellow-600/30 to-green-800/50 rounded-lg">
-                <div className="w-full h-full bg-gradient-to-t from-charcoal/20 to-transparent rounded-lg" />
-              </div>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center text-soft-white">
-                  <svg className="w-12 h-12 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                  <h3 className="font-sans text-subheading font-light mb-1">Find Us in Paradise</h3>
-                  <p className="text-small text-soft-white/80">Jl. Raya Sayan, Ubud, Bali</p>
-                </div>
-              </div>
-            </div>
+            </ScrollAnimation>
           </div>
         </div>
       </section>
@@ -443,27 +470,33 @@ export default function Home() {
       {/* Final CTA Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-charcoal">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="font-sans text-section font-light text-soft-white mb-6">
-            Begin Your Journey to Tranquility
-          </h2>
-          <p className="text-body text-soft-white/80 mb-8 font-light leading-relaxed">
-            Escape to The Sayan Villas and discover why our guests describe their stay as life-changing.
-            Your private paradise in the heart of Bali awaits.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/accommodation"
-              className="inline-flex items-center px-8 py-4 bg-soft-white text-charcoal hover:bg-muted-gold transition-all duration-300 transform hover:scale-105 font-medium text-button"
-            >
-              Explore Our Villas
-            </Link>
-            <Link
-              href="/contact"
-              className="inline-flex items-center px-8 py-4 border-2 border-soft-white text-soft-white hover:bg-soft-white hover:text-charcoal transition-all duration-300 transform hover:scale-105 font-medium text-button"
-            >
-              Make a Reservation
-            </Link>
-          </div>
+          <ScrollAnimation {...animationPresets.sectionFadeUp} delay={0}>
+            <h2 className="font-sans text-section font-light text-soft-white mb-6">
+              Begin Your Journey to Tranquility
+            </h2>
+          </ScrollAnimation>
+          <ScrollAnimation {...animationPresets.sectionFadeUp} delay={200}>
+            <p className="text-body text-soft-white/80 mb-8 font-light leading-relaxed">
+              Escape to The Sayan Villas and discover why our guests describe their stay as life-changing.
+              Your private paradise in the heart of Bali awaits.
+            </p>
+          </ScrollAnimation>
+          <ScrollAnimation {...animationPresets.sectionFadeUp} delay={400}>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/accommodation"
+                className="inline-flex items-center px-8 py-4 bg-soft-white text-charcoal hover:bg-muted-gold transition-all duration-300 transform hover:scale-105 font-medium text-button"
+              >
+                Explore Our Villas
+              </Link>
+              <Link
+                href="/contact"
+                className="inline-flex items-center px-8 py-4 border-2 border-soft-white text-soft-white hover:bg-soft-white hover:text-charcoal transition-all duration-300 transform hover:scale-105 font-medium text-button"
+              >
+                Make a Reservation
+              </Link>
+            </div>
+          </ScrollAnimation>
         </div>
       </section>
       </main>

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import GlobalStyles from "./components/GlobalStyles";
+import Navigation from "./components/Navigation";
 
 export const metadata: Metadata = {
   title: "The Sayan Villas | Private Luxury Villas with Infinity Pools in Ubud Bali",
@@ -73,11 +75,12 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon.ico', sizes: '32x32' },
       { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon-16x16.svg', sizes: '16x16', type: 'image/svg+xml' },
     ],
     apple: [
-      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+      { url: '/apple-touch-icon.svg', sizes: '180x180', type: 'image/svg+xml' },
     ],
   },
   manifest: '/site.webmanifest',
@@ -91,6 +94,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
+        <GlobalStyles />
+        <Navigation />
         {children}
       </body>
     </html>

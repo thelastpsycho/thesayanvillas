@@ -2,23 +2,51 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import Image from 'next/image';
+import ScrollAnimation, { animationPresets } from './ScrollAnimation';
 
 export default function Navigation() {
   const pathname = usePathname();
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isNavigating, setIsNavigating] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 10); // Small threshold for when user scrolls past hero
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Force navigation positioning with useEffect
+  useEffect(() => {
+    const nav = document.querySelector('nav');
+    if (nav) {
+      (nav as HTMLElement).style.position = 'fixed';
+      (nav as HTMLElement).style.top = '0';
+      (nav as HTMLElement).style.left = '0';
+      (nav as HTMLElement).style.right = '0';
+      (nav as HTMLElement).style.zIndex = '9999';
+    }
+  }, []);
+
+  const handleSmoothNavigation = (href: string) => {
+    if (href === pathname) return;
+
+    setIsNavigating(true);
+    setIsOpen(false);
+
+    // Add a small delay for the transition effect
+    setTimeout(() => {
+      router.push(href);
+    }, 150);
+  };
+
   const navItems = [
+    { name: 'Home', href: '/' },
     { name: 'Villas', href: '/accommodation' },
     { name: 'Gallery', href: '/gallery' },
     { name: 'About', href: '/about' },
@@ -26,11 +54,20 @@ export default function Navigation() {
   ];
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+    <nav
+    className={`fixed top-0 left-0 right-0 w-full z-[9999] transition-all duration-300 ${
       scrolled
         ? 'bg-soft-white/95 backdrop-blur-lg shadow-md'
         : 'bg-transparent'
-    }`}>
+    }`}
+    style={{
+      position: 'fixed',
+      top: '0',
+      left: '0',
+      right: '0',
+      zIndex: 9999
+    }}
+  >
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
@@ -55,9 +92,9 @@ export default function Navigation() {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-10">
             {navItems.map((item) => (
-              <Link
+              <button
                 key={item.name}
-                href={item.href}
+                onClick={() => handleSmoothNavigation(item.href)}
                 className={`text-nav transition-all duration-300 relative group py-1 ${
                   pathname === item.href
                     ? scrolled
@@ -66,7 +103,8 @@ export default function Navigation() {
                     : scrolled
                       ? 'text-charcoal/90 hover:text-charcoal'
                       : 'text-white hover:text-white'
-                }`}
+                } ${isNavigating ? 'opacity-70' : 'hover:scale-105'}`}
+                disabled={isNavigating}
               >
                 {item.name}
                 <span className={`absolute bottom-0 left-0 h-px transition-all duration-300 ${
@@ -76,18 +114,19 @@ export default function Navigation() {
                 } ${
                   scrolled || pathname === item.href ? 'bg-muted-gold' : 'bg-white'
                 }`}></span>
-              </Link>
+              </button>
             ))}
-            <Link
-              href="/contact"
+            <button
+              onClick={() => handleSmoothNavigation('/contact')}
               className={`ml-4 px-6 py-2.5 text-button-small transition-all duration-300 rounded-full ${
                 scrolled
                   ? 'text-charcoal bg-soft-white border border-charcoal/20 hover:bg-charcoal hover:text-soft-white'
                   : 'text-white border border-white/30 hover:bg-white hover:text-charcoal'
-              }`}
+              } ${isNavigating ? 'opacity-70' : 'hover:scale-105'}`}
+              disabled={isNavigating}
             >
               Book Now
-            </Link>
+            </button>
           </div>
 
           {/* Mobile menu button */}
@@ -121,46 +160,50 @@ export default function Navigation() {
         </div>
 
         {/* Mobile Navigation */}
-        <div className={`lg:hidden absolute inset-x-0 top-20 transition-all duration-500 ease-in-out overflow-hidden ${
-          isOpen ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'
-        }`}>
-          <div className="bg-white/95 backdrop-blur-sm border-b border-sand/20 shadow-lg">
-            <div className="px-4 py-6 space-y-1">
-              {navItems.map((item, index) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className={`block px-4 py-3 text-nav-mobile transition-all duration-300 ${
-                    pathname === item.href
-                      ? 'text-muted-gold font-medium'
-                      : 'text-charcoal hover:text-muted-gold'
-                  }`}
-                  onClick={() => setIsOpen(false)}
-                  style={{
-                    animationDelay: isOpen ? `${index * 50}ms` : '0ms',
-                    animation: isOpen ? 'slideInRight 0.3s ease-out forwards' : 'none'
-                  }}
-                >
-                  {item.name}
-                </Link>
-              ))}
+        <ScrollAnimation animation="slideRight" delay={0} duration={300}>
+          <div className={`lg:hidden absolute inset-x-0 top-20 transition-all duration-500 ease-in-out overflow-hidden ${
+            isOpen ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'
+          }`}>
+            <div className="bg-white/95 backdrop-blur-sm border-b border-sand/20 shadow-lg">
+              <div className="px-4 py-6 space-y-1">
+                {navItems.map((item, index) => (
+                  <ScrollAnimation
+                    key={item.name}
+                    {...animationPresets.sectionSlideRight}
+                    delay={index * 50}
+                    duration={300}
+                  >
+                    <button
+                      onClick={() => handleSmoothNavigation(item.href)}
+                      className={`block w-full text-left px-4 py-3 text-nav-mobile transition-all duration-300 ${
+                        pathname === item.href
+                          ? 'text-muted-gold font-medium'
+                          : 'text-charcoal hover:text-muted-gold'
+                      } ${isNavigating ? 'opacity-70' : 'hover:scale-105'}`}
+                      disabled={isNavigating}
+                    >
+                      {item.name}
+                    </button>
+                  </ScrollAnimation>
+                ))}
 
-              <div className="pt-4 mt-2">
-                <Link
-                  href="/contact"
-                  className="block w-full px-4 py-3 text-button text-charcoal bg-muted-gold hover:bg-charcoal hover:text-soft-white transition-all duration-300 text-center"
-                  onClick={() => setIsOpen(false)}
-                  style={{
-                    animationDelay: isOpen ? '200ms' : '0ms',
-                    animation: isOpen ? 'slideInRight 0.3s ease-out forwards' : 'none'
-                  }}
-                >
-                  Book Now
-                </Link>
+                <div className="pt-4 mt-2">
+                  <ScrollAnimation {...animationPresets.sectionSlideRight} delay={200} duration={300}>
+                    <button
+                      onClick={() => handleSmoothNavigation('/contact')}
+                      className={`block w-full px-4 py-3 text-button text-charcoal bg-muted-gold hover:bg-charcoal hover:text-soft-white transition-all duration-300 text-center ${
+                        isNavigating ? 'opacity-70' : 'hover:scale-105'
+                      }`}
+                      disabled={isNavigating}
+                    >
+                      Book Now
+                    </button>
+                  </ScrollAnimation>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </ScrollAnimation>
       </div>
     </nav>
   );

@@ -44,7 +44,11 @@ export default function Navigation() {
               width={96}
               height={96}
               className="h-24 w-auto"
-              style={{ filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.3)) invert(1)' }}
+              style={{
+                filter: scrolled
+                  ? 'drop-shadow(0 4px 8px rgba(0,0,0,0.3)) invert(1)'
+                  : 'drop-shadow(0 4px 8px rgba(0,0,0,0.3))'
+              }}
             />
           </Link>
 
@@ -54,7 +58,7 @@ export default function Navigation() {
               <Link
                 key={item.name}
                 href={item.href}
-                className={`text-sm font-medium transition-all duration-300 relative group py-1 ${
+                className={`text-nav transition-all duration-300 relative group py-1 ${
                   pathname === item.href
                     ? scrolled
                       ? 'text-charcoal font-semibold'
@@ -76,7 +80,7 @@ export default function Navigation() {
             ))}
             <Link
               href="/contact"
-              className={`ml-4 px-6 py-2.5 text-sm font-medium transition-all duration-300 rounded-full ${
+              className={`ml-4 px-6 py-2.5 text-button-small transition-all duration-300 rounded-full ${
                 scrolled
                   ? 'text-charcoal bg-soft-white border border-charcoal/20 hover:bg-charcoal hover:text-soft-white'
                   : 'text-white border border-white/30 hover:bg-white hover:text-charcoal'
@@ -90,54 +94,73 @@ export default function Navigation() {
           <div className="lg:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`p-2 transition-colors duration-300 ${
+              className={`p-2 relative transition-all duration-300 transform hover:scale-105 ${
                 scrolled ? 'text-charcoal hover:text-muted-gold' : 'text-white hover:text-white/80'
               }`}
               aria-label="Toggle menu"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                {isOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16" />
-                )}
-              </svg>
+              <div className="w-6 h-5 relative flex flex-col justify-center items-center">
+                <span className={`absolute h-0.5 w-6 transition-all duration-300 ease-in-out transform ${
+                  isOpen
+                    ? 'rotate-45 translate-y-0 bg-charcoal'
+                    : '-translate-y-2 bg-current'
+                }`} />
+                <span className={`absolute h-0.5 w-6 transition-all duration-300 ease-in-out ${
+                  isOpen
+                    ? 'opacity-0 scale-0'
+                    : 'bg-current'
+                }`} />
+                <span className={`absolute h-0.5 w-6 transition-all duration-300 ease-in-out transform ${
+                  isOpen
+                    ? '-rotate-45 translate-y-0 bg-charcoal'
+                    : 'translate-y-2 bg-current'
+                }`} />
+              </div>
             </button>
           </div>
         </div>
 
         {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="lg:hidden">
-            <div className="absolute left-0 right-0 top-20 bg-soft-white/95 backdrop-blur-lg border-b border-sand/30 shadow-lg">
-              <div className="px-6 py-6 space-y-1">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className={`block px-4 py-3 text-base font-medium transition-all duration-300 rounded-lg ${
-                      pathname === item.href
-                        ? 'text-muted-gold bg-beige/50'
-                        : 'text-charcoal hover:text-muted-gold hover:bg-beige/50'
-                    }`}
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-                <div className="pt-4 border-t border-sand/30">
-                  <Link
-                    href="/contact"
-                    className="block w-full px-4 py-3 text-base font-medium text-charcoal bg-soft-white border border-charcoal/20 hover:bg-charcoal hover:text-soft-white transition-all duration-300 rounded-lg text-center"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    Book Now
-                  </Link>
-                </div>
+        <div className={`lg:hidden absolute inset-x-0 top-20 transition-all duration-500 ease-in-out overflow-hidden ${
+          isOpen ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'
+        }`}>
+          <div className="bg-white/95 backdrop-blur-sm border-b border-sand/20 shadow-lg">
+            <div className="px-4 py-6 space-y-1">
+              {navItems.map((item, index) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={`block px-4 py-3 text-nav-mobile transition-all duration-300 ${
+                    pathname === item.href
+                      ? 'text-muted-gold font-medium'
+                      : 'text-charcoal hover:text-muted-gold'
+                  }`}
+                  onClick={() => setIsOpen(false)}
+                  style={{
+                    animationDelay: isOpen ? `${index * 50}ms` : '0ms',
+                    animation: isOpen ? 'slideInRight 0.3s ease-out forwards' : 'none'
+                  }}
+                >
+                  {item.name}
+                </Link>
+              ))}
+
+              <div className="pt-4 mt-2">
+                <Link
+                  href="/contact"
+                  className="block w-full px-4 py-3 text-button text-charcoal bg-muted-gold hover:bg-charcoal hover:text-soft-white transition-all duration-300 text-center"
+                  onClick={() => setIsOpen(false)}
+                  style={{
+                    animationDelay: isOpen ? '200ms' : '0ms',
+                    animation: isOpen ? 'slideInRight 0.3s ease-out forwards' : 'none'
+                  }}
+                >
+                  Book Now
+                </Link>
               </div>
             </div>
           </div>
-        )}
+        </div>
       </div>
     </nav>
   );

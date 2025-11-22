@@ -43,13 +43,13 @@ export default function Hero() {
         <div className="w-16 sm:w-20 md:w-24 h-px bg-gradient-to-r from-transparent via-white/60 to-transparent mx-auto mb-2 sm:mb-3" />
 
         {/* Location Text */}
-        <p className="text-xs sm:text-sm md:text-base text-white/80 font-light tracking-[0.2em] sm:tracking-widest uppercase mb-6 sm:mb-8">
+        <p className="text-meta text-white/80 mb-6 sm:mb-8">
           Private Sanctuary · Ubud · Bali
         </p>
 
         {/* Description Text */}
         <div className="mb-8 sm:mb-10 md:mb-12">
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/90 font-light max-w-md sm:max-w-lg md:max-w-xl mx-auto leading-relaxed px-2">
+          <p className="text-body text-white/90 max-w-md sm:max-w-lg md:max-w-xl mx-auto leading-relaxed px-2">
             An intimate retreat where timeless Balinese elegance meets modern luxury
           </p>
         </div>
@@ -58,13 +58,13 @@ export default function Hero() {
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-4">
           <Link
             href="/accommodation"
-            className="group relative w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-transparent border border-white/30 text-white font-light tracking-wide text-sm sm:text-base transition-all duration-500 hover:border-white/60 hover:bg-white/5"
+            className="group relative w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-transparent border border-white/30 text-white text-button transition-all duration-500 hover:border-white/60 hover:bg-white/5"
           >
             <span className="relative z-10">Discover</span>
           </Link>
           <Link
             href="/contact"
-            className="group relative w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-light tracking-wide text-sm sm:text-base transition-all duration-500 hover:bg-white/20 hover:border-white/40"
+            className="group relative w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-button transition-all duration-500 hover:bg-white/20 hover:border-white/40"
           >
             <span className="relative z-10">Reserve Your Stay</span>
           </Link>
@@ -74,7 +74,7 @@ export default function Hero() {
       {/* Subtle Scroll Indicator */}
       <div className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2">
         <div className="flex flex-col items-center space-y-1 sm:space-y-2">
-          <span className="text-[10px] sm:text-xs text-white/50 font-light tracking-widest uppercase">Scroll</span>
+          <span className="text-small text-white/50">Scroll</span>
           <div className="w-px h-4 sm:h-6 bg-gradient-to-b from-white/30 to-transparent animate-pulse" />
         </div>
       </div>

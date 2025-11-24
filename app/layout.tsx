@@ -93,6 +93,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Allura&display=swap');
+        </style>
+      </head>
       <body className="antialiased">
         <GlobalStyles />
         <Navigation />

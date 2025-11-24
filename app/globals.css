@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100..900;1,100..900&family=Parisienne&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -13,7 +13,9 @@
   --warm-gray: #4A4A4A;
 
   /* Typography */
-  --font-sans: 'Nunito', sans-serif;
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Poppins', sans-serif;
+  --font-calligraphy: 'Parisienne', cursive;
 }
 
 @theme inline {
@@ -230,4 +232,14 @@ html {
 
 .text-small {
   @apply text-[10px] sm:text-xs font-light tracking-widest uppercase;
+}
+
+/* Calligraphy font for H2 headings */
+.font-calligraphy {
+  font-family: 'Allura', cursive !important;
+}
+
+/* Direct H2 styling to ensure font applies */
+h2 {
+  font-family: 'Allura', cursive !important;
 }

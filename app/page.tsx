@@ -194,7 +194,7 @@ export default function Home() {
       <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
         <div className="text-center space-y-6">
           <ScrollAnimation {...animationPresets.sectionFadeUp} delay={0}>
-            <h2 className="font-sans text-section font-light text-charcoal">
+            <h2 className="font-calligraphy text-section font-light text-charcoal" style={{ fontFamily: "'Allura', cursive" }}>
               Welcome to Your Private Sanctuary
             </h2>
           </ScrollAnimation>
@@ -218,7 +218,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto">
           <ScrollAnimation {...animationPresets.sectionFadeUp} delay={0}>
             <div className="text-center mb-12">
-              <h2 className="font-sans text-section font-light text-charcoal mb-4">
+              <h2 className="font-calligraphy text-section font-light text-charcoal mb-4">
                 Exquisite Villa Features
               </h2>
               <p className="text-body text-charcoal/80 font-light max-w-2xl mx-auto">
@@ -245,7 +245,7 @@ export default function Home() {
                     </div>
 
                     <div className="space-y-2">
-                      <h3 className="font-sans text-subheading font-light text-charcoal group-hover:text-muted-gold transition-colors duration-300">
+                      <h3 className="font-serif text-subheading font-light text-charcoal group-hover:text-muted-gold transition-colors duration-300">
                         {feature.title}
                       </h3>
                       <p className="text-caption text-charcoal/60 leading-relaxed font-light group-hover:text-charcoal/80 transition-colors duration-300">
@@ -265,7 +265,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <ScrollAnimation {...animationPresets.sectionFadeUp} delay={0}>
             <div className="text-center mb-16">
-              <h2 className="font-sans text-section font-light text-charcoal mb-6">
+              <h2 className="font-calligraphy text-section font-light text-charcoal mb-6">
                 Curated Experiences
               </h2>
               <p className="text-body text-charcoal/80 font-light max-w-2xl mx-auto">
@@ -318,7 +318,7 @@ export default function Home() {
                           </div>
                         </div>
                       </div>
-                      <h3 className="font-sans text-subheading font-light text-charcoal mb-2 group-hover:text-muted-gold transition-colors">
+                      <h3 className="font-serif text-subheading font-light text-charcoal mb-2 group-hover:text-muted-gold transition-colors">
                         {experience.title}
                       </h3>
                       <p className="text-caption text-charcoal/70 font-light leading-relaxed">
@@ -338,7 +338,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto">
           <ScrollAnimation {...animationPresets.sectionFadeUp} delay={0}>
             <div className="text-center mb-12">
-              <h2 className="font-sans text-section font-light text-charcoal mb-6">
+              <h2 className="font-calligraphy text-section font-light text-charcoal mb-6">
                 Guest Experiences
               </h2>
               <p className="text-body text-charcoal/80 font-light max-w-2xl mx-auto">
@@ -383,7 +383,7 @@ export default function Home() {
             <ScrollAnimation {...animationPresets.sectionSlideLeft} delay={0}>
               <div className="space-y-6">
                 <div>
-                  <h2 className="font-sans text-section font-light text-charcoal mb-4">
+                  <h2 className="font-calligraphy text-section font-light text-charcoal mb-4">
                     Prime Location in Sayan
                   </h2>
                   <p className="text-caption text-charcoal/80 leading-relaxed font-light mb-4">

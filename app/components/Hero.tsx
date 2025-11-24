@@ -57,7 +57,7 @@ export default function Hero() {
         {/* Description Text */}
         <ScrollAnimation {...animationPresets.sectionFadeUp} delay={400}>
           <div className="mb-8 sm:mb-10 md:mb-12">
-            <p className="text-body text-white/90 max-w-md sm:max-w-lg md:max-w-xl mx-auto leading-relaxed px-2">
+            <p className="text-lg sm:text-xl md:text-2xl text-white/90 max-w-md sm:max-w-lg md:max-w-xl mx-auto leading-relaxed px-2 font-light font-sans">
               An intimate retreat where timeless Balinese elegance meets modern luxury
             </p>
           </div>

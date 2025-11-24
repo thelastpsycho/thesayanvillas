@@ -11,7 +11,6 @@ export default function Navigation() {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [isNavigating, setIsNavigating] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,13 +35,10 @@ export default function Navigation() {
   const handleSmoothNavigation = (href: string) => {
     if (href === pathname) return;
 
-    setIsNavigating(true);
     setIsOpen(false);
 
-    // Add a small delay for the transition effect
-    setTimeout(() => {
-      router.push(href);
-    }, 150);
+    // Use direct navigation without artificial delay
+    router.push(href);
   };
 
   const navItems = [
@@ -95,7 +91,7 @@ export default function Navigation() {
               <button
                 key={item.name}
                 onClick={() => handleSmoothNavigation(item.href)}
-                className={`text-nav transition-all duration-300 relative group py-1 ${
+                className={`text-nav transition-all duration-300 relative group py-1 hover:scale-105 ${
                   pathname === item.href
                     ? scrolled
                       ? 'text-charcoal font-semibold'
@@ -103,8 +99,7 @@ export default function Navigation() {
                     : scrolled
                       ? 'text-charcoal/90 hover:text-charcoal'
                       : 'text-white hover:text-white'
-                } ${isNavigating ? 'opacity-70' : 'hover:scale-105'}`}
-                disabled={isNavigating}
+                }`}
               >
                 {item.name}
                 <span className={`absolute bottom-0 left-0 h-px transition-all duration-300 ${
@@ -118,12 +113,11 @@ export default function Navigation() {
             ))}
             <button
               onClick={() => handleSmoothNavigation('/contact')}
-              className={`ml-4 px-6 py-2.5 text-button-small transition-all duration-300 rounded-full ${
+              className={`ml-4 px-6 py-2.5 text-button-small transition-all duration-300 rounded-full hover:scale-105 ${
                 scrolled
                   ? 'text-charcoal bg-soft-white border border-charcoal/20 hover:bg-charcoal hover:text-soft-white'
                   : 'text-white border border-white/30 hover:bg-white hover:text-charcoal'
-              } ${isNavigating ? 'opacity-70' : 'hover:scale-105'}`}
-              disabled={isNavigating}
+              }`}
             >
               Book Now
             </button>
@@ -175,12 +169,11 @@ export default function Navigation() {
                   >
                     <button
                       onClick={() => handleSmoothNavigation(item.href)}
-                      className={`block w-full text-left px-4 py-3 text-nav-mobile transition-all duration-300 ${
+                      className={`block w-full text-left px-4 py-3 text-nav-mobile transition-all duration-300 hover:scale-105 ${
                         pathname === item.href
                           ? 'text-muted-gold font-medium'
                           : 'text-charcoal hover:text-muted-gold'
-                      } ${isNavigating ? 'opacity-70' : 'hover:scale-105'}`}
-                      disabled={isNavigating}
+                      }`}
                     >
                       {item.name}
                     </button>
@@ -191,10 +184,7 @@ export default function Navigation() {
                   <ScrollAnimation {...animationPresets.sectionSlideRight} delay={200} duration={300}>
                     <button
                       onClick={() => handleSmoothNavigation('/contact')}
-                      className={`block w-full px-4 py-3 text-button text-charcoal bg-muted-gold hover:bg-charcoal hover:text-soft-white transition-all duration-300 text-center ${
-                        isNavigating ? 'opacity-70' : 'hover:scale-105'
-                      }`}
-                      disabled={isNavigating}
+                      className="block w-full px-4 py-3 text-button text-charcoal bg-muted-gold hover:bg-charcoal hover:text-soft-white transition-all duration-300 text-center hover:scale-105"
                     >
                       Book Now
                     </button>
